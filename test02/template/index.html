@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="/js/connect.js"></script>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <h2>{{test}}</h2>
+    <a>TEST</a>
+    <div class="container">
+      <form method="post" id="jquery_practice" action="./post">
+	<input type="text" name="name" value="yamada" id="form_name" />
+	<button type="submit" value="submit" name="submit" id="form_submit">submit</button>
+      </form>
+      <div id="result"></div>
+      {{debug}}
+    </div>
+  </body> 
+</html>
