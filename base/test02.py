@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Last-Updated : <2014/01/02 23:55:03 by samui>
+# Last-Updated : <2014/01/03 00:59:45 by samui>
 
 import webapp2
 import jinja2
@@ -30,6 +30,7 @@ app = webapp2.WSGIApplication([
     webapp2.Route(r'/', handler=handler.HelloWebApp2, name='home'),
     webapp2.Route(r'/postA', handler=handler.PostTEST, name='postA'),
     webapp2.Route(r'/postB', handler=handler.PostTEST2, name='postB'),
+    webapp2.Route(r'/testA', handler=handler.TEST, name='postB'),
 ],
                               debug=True,
                               config=config['parameter'])

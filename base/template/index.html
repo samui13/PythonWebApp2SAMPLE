@@ -2,28 +2,16 @@
 <body>
   {{common_head|safe}}
   <div class="container">
-    <h1>送信テスト</h1>
-    <h2>{{test}}</h2>
-    <div class="container">
-      <h3>Normal Submit</h3>
-
-      <form method="post" id="form_test" action="./postB">
-	<input type="text" name="name" value="yamada" id="form_name" />
-	<input type="submit" value="submit" name="submit" id="form_submit">submit</button>
-      </form>
-    </div>
+    <h1>Index</h1>
     
     <div class="container">
       <h3>Ajax System</h3>
-      <form method="post" id="jquery_practice" action="./postA">
-	<input type="text" name="name" value="yamada" id="form_name" />
-	<button type="submit" value="submit" name="submit" id="form_submit">submit</button>
+      <form method="post" id="jquery_practice" action="{{uri_for('postA')}}">
+	<input type="text" name="name" value="yamada" id="form_name" /><br />
+        <textarea rows="10" cols="120" name="" id=""></textarea><br />
+	<button type="submit" value="submit" name="submit" id="form_submit">submit</button><br />
       </form>
     </div>
     <div id="result"></div>
-    {{debug}}
-    {{ uri_for('postA') }}
-
   </div>
-</body> 
-</html>
+{{common_footer|safe}}

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Last-Updated : <2014/01/03 00:30:01 by samui>
+# Last-Updated : <2014/01/03 05:20:03 by samui>
 import cgi
 import webapp2
 import jinja2
@@ -10,29 +10,35 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-class BaseHandler(webapp2.RequestHandler):
-    def render2(self, template, params):
+class BaseTemplate:
+    @classmethod
+    def render(self, template, params):
         baseTemplate = JINJA_ENVIRONMENT.get_template('template/common/base.html')
+        headTempate = JINJA_ENVIRONMENT.get_template('template/common/_header.html')
+        footTemplate = JINJA_ENVIRONMENT.get_template('template/common/_footer.html')
         params.update({
-            'common_head':JINJA_ENVIRONMENT.get_template('template/common/_header.html').render({'uri_for':self.uri_for})
+            'common_head':headTempate.render({'uri_for':webapp2.uri_for}),
+            'common_footer': footTemplate.render({'uri_for':webapp2.uri_for}),
         })
         template = JINJA_ENVIRONMENT.get_template(template)
         return baseTemplate.render(params)+template.render(params)
 
 
+class BaseHandler(webapp2.RequestHandler):
+    def auth(self):
+        pass
+
 class HelloWebApp2(BaseHandler):
     def get(self):
         template_values = {
             'test':'HelloWorld,WebApp2!',
-            'debug': self.uri_for('home'),
             'uri_for': self.uri_for,
             #'debug':'t',
         }
-        #template = JINJA_ENVIRONMENT.get_template('template/index.html')
-        self.response.write(self.render2('template/index.html',template_values))
-        self.response.write(self.app.config.get('foo'))
+        self.response.write(BaseTemplate.render('template/index.html',template_values))
 
-class PostTEST2(webapp2.RequestHandler):
+
+class PostTEST2(BaseHandler):
     def post(self):
         test = cgi.escape(self.request.get('name'))
         template_values = {
@@ -43,10 +49,12 @@ class PostTEST2(webapp2.RequestHandler):
         
         
         
-class PostTEST(webapp2.RequestHandler):
+class PostTEST(BaseHandler):
     def post(self):
         test = cgi.escape(self.request.get('name'))
         self.response.write("test"+test)
 
-
+class TEST(BaseHandler):
+    def get(self):
+        self.abort(404)
         
