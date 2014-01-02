@@ -1,15 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="/js/connect.js"></script>
-    <link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
-  </head>
-  <body>
-    <h1>Hello</h1>
+</head>
+<body>
+  {{common_head|safe}}
+  <div class="container">
+    <h1>送信テスト</h1>
     <h2>{{test}}</h2>
-    <a>TEST</a>
     <div class="container">
       <h3>Normal Submit</h3>
 
@@ -28,5 +22,8 @@
     </div>
     <div id="result"></div>
     {{debug}}
-  </body> 
+    {{ uri_for('postA') }}
+
+  </div>
+</body> 
 </html>

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Last-Updated : <2014/01/02 21:30:19 by samui>
+# Last-Updated : <2014/01/03 00:48:18 by samui>
 import cgi
 import webapp2
 import jinja2
@@ -19,11 +19,20 @@ class HelloWebApp2(webapp2.RequestHandler):
         }
         template = JINJA_ENVIRONMENT.get_template('template/index.html')
         self.response.write(template.render(template_values))
+
+class PostTEST2(webapp2.RequestHandler):
+    def post(self):
+        test = cgi.escape(self.request.get('name'))
+        template_values = {
+            'test': test,
+        }
+        template = JINJA_ENVIRONMENT.get_template('template/submit.html')
+        self.response.write(template.render(template_values))
+        
+        
         
 class PostTEST(webapp2.RequestHandler):
     def post(self):
         test = cgi.escape(self.request.get('name'))
         self.response.write("test"+test)
 
-
-        
