@@ -6,12 +6,14 @@
     <h1>My List</h1>
     <div class="rows">
       <div class="col-md-8">
+	<a href="{{uri_for('json_list')}}">JSON</a>
+	<a href="{{uri_for('json_list')}}?q=10">JSON</a>
 	<ul>
 	  {% for blog in articles%}
 	  <li>
-	    [<a href="{{uri_for('my_delete')}}/{{blog.key().id()}}">Delete</a>]
+	    [<a href="{{uri_for('my_delete',ID=blog.key().id())}}">Delete</a>]
 	    [<a href="{{uri_for('view',ID=blog.key().id())}}">View</a>] 
-	    [<a href="{{uri_for('my_edit')}}/{{blog.key().id()}}">Edit</a>] 
+	    [<a href="{{uri_for('my_edit',ID=blog.key().id())}}">Edit</a>] 
 	    
 	    {{blog.title}},{{blog.text}},{{blog.created_at}},</li>
 	  {% endfor %}

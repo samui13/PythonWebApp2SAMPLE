@@ -9,5 +9,7 @@
       {{blog.text}}
     </div>
     {{blog.created_at}}
+    <a href="{{uri_for('json_view',ID=blog.key().id())}}">JSON</a>
+    
   </div>
 {{common_footer|safe}}  

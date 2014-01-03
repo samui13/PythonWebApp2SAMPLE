@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Last-Updated : <2014/01/04 03:38:25 by samui>
+# Last-Updated : <2014/01/04 06:00:15 by samui>
 
 import webapp2
 import cgi
@@ -31,18 +31,30 @@ class MyMethod:
             view = BaseTemplate.render('template/index.html',template_values)
             self.response.write(view)
     class Edit(BaseHandler):
-        def get(self):
+        def get(self,ID = None):
+            blog = Article.get_by_id(long(ID))
+            logging.debug(blog)
+            if blog!=None:
+                title = blog.title
+                text = blog.text
+                blogid = blog.key().id()
+            else:
+                title = "BlogTitleSample0"
+                text = "BlogTextSample0"
+                blogid = 1
+
             template_values = {
                 'uri_for':self.uri_for,
-                'blogTitle':'BlogTitleSample0',
-                'blogText':'BlogTextSample0',
+                'blogTitle':title,
+                'blogText':text,
+                'blogid': blogid,
             }
             view = BaseTemplate.render('template/my/edit.html',
                                        template_values)
             self.response.write(view)
             
     class Create(BaseHandler):
-        def post(self):
+        def post(self,ID = None):
             atitle = cgi.escape(self.request.get('blogTitle'))
             atext = cgi.escape(self.request.get('blogText'))
             blog = Article(title=atitle,
@@ -53,8 +65,10 @@ class MyMethod:
             self.redirect_to('home')
 
     class Delete(BaseHandler):
-        def get(self,ID):
-            self.response.write(ID)
+        def get(self,ID=None):
+            blog = Article.get_by_id(long(ID))
+            blog.delete()
+            self.redirect_to('my_list')
 
     class List(BaseHandler):
         #@AroundMethod(before,after)
