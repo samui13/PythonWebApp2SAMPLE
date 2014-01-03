@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <title>キイテター</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+
+    <meta name="description" content="ニコニコ動画のマイリストを月毎に表示する。">
+    <meta name="keywords" content="ニコニコ動画, マイリスト,時系列表示, 月毎,">
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="/js/viewNico.js"></script>
+    <script>
+      (function($){
+      $.url = '{{nicoRSS}}';
+      $.smNumber = '{{smNumber}}'
+      
+      })(jQuery);
+
+      var player;
+      function onNicoPlayerReady(id) {
+            player = document.getElementById(id);
+      // 以降、playerオブジェクトに対して操作が行なえるようになる
+      }
+      function test(){
+      player.ext_play(false);
+      console.log(player.ext_getPlayheadTime());
+      }
+    </script>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="rows">
+	<div class="col-md-6">
+	  <h1><a href="/">キイテター</a></h1>
+	  <small>ニコニコ動画のmylistのURLを入力してください。反応がおそいんで連続でsubmitしないでね。</small>
+	  <form action="/" method="get">
+	    <input type="text" name="mylistURL" size="40" value="http://www.nicovideo.jp/mylist/36214367">
+	    <input type="submit" value="submit"/>
+	  </form>
+	  <input type="button" onclick="test();">
+	</div>
+	<div class="col-md-6">
+	  <div id="flvPlayer">
+	    <script type="text/javascript" src="http://ext.nicovideo.jp/thumb_watch/sm3402368?w=490&h=307"></script>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="container">
+      <div id="sm0">
+	<img />
+      </div>
+    </div>
+<script>
+  /*
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46479006-1', 'kiiteta.appspot.com');
+  ga('send', 'pageview');
+  */
+</script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  </body>
+</html>
