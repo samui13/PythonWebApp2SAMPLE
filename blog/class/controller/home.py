@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Last-Updated : <2014/01/04 02:28:17 by samui>
+# Last-Updated : <2014/01/04 03:53:18 by samui>
 
 import webapp2
 from functools import wraps
@@ -20,3 +20,13 @@ class HelloWebApp2(BaseHandler):
         view = BaseTemplate.render('template/index.html',template_values)
         self.response.write(view)
 
+class Home:
+    class View(BaseHandler):
+        def get(self,ID = None):
+            if ID == None:
+                self.redirect_to('home')
+            #address_k = db.Key.from_path('Employee', 'asalieri', 'Address', 1) 
+            #address = db.get(address_k)
+            
+            self.response.write(ID)
+            

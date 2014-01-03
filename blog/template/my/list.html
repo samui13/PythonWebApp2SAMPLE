@@ -4,7 +4,23 @@
 <body>
   <div class="container">
     <h1>My List</h1>
-        
+    <div class="rows">
+      <div class="col-md-8">
+	<ul>
+	  {% for blog in articles%}
+	  <li>
+	    [<a href="{{uri_for('my_delete')}}/{{blog.key().id()}}">Delete</a>]
+	    [<a href="{{uri_for('view',ID=blog.key().id())}}">View</a>] 
+	    [<a href="{{uri_for('my_edit')}}/{{blog.key().id()}}">Edit</a>] 
+	    
+	    {{blog.title}},{{blog.text}},{{blog.created_at}},</li>
+	  {% endfor %}
+	</ul>
+      </div>
+      <div class="col-md-4">
+	Hello
+      </div>
+    </div>
   </div>
 {{common_footer|safe}}  
 
