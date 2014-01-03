@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Last-Updated : <2014/01/04 03:50:08 by samui>
+# Last-Updated : <2014/01/04 04:11:54 by samui>
 
 
 import webapp2
@@ -10,7 +10,8 @@ import webapp2
 import handler
 
 app = webapp2.WSGIApplication([
-    webapp2.Route(r'/', handler=handler.HelloWebApp2, name='home'),
+    #webapp2.Route(r'/', handler=handler.HelloWebApp2, name='home'),
+    webapp2.Route(r'/', handler=handler.Home.Home, name='home'),
     webapp2.Route(r'/view/<ID:\d+>', handler=handler.Home.View, name='view'),
     webapp2.Route(r'/session/login',handler=handler.Session.Login,name='login'),
     
