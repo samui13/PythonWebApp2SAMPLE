@@ -1,0 +1,15 @@
+{{common_base|safe}}
+{{common_head|safe}}
+</head>
+<body>
+  <div class="container">
+    <h1>Edit</h1>
+    <form action="{{uri_for('my_create')}}" method="post">
+      <input type="text" name="blogTitle" value="{{blogTitle}}"/><br />
+      <textarea rows="10" cols="120" name="blogText" id="">
+	{{blogText}}
+      </textarea><br />
+      <button>送信</button>
+    </form>
+  </div>
+{{common_footer|safe}}  
