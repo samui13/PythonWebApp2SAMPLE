@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Last-Updated : <2014/01/03 23:30:54 by samui>
+# Last-Updated : <2014/01/03 23:40:52 by samui>
 
 import webapp2
 from functools import wraps
@@ -16,7 +16,6 @@ class HelloWebApp2(BaseHandler):
             #'debug': self.uri_for('home'),
             'debug':'t',
         }
-        #self.res
-        #logging.debug(os.path.dirname(__file__)+"../../")
-        self.response.write(BaseTemplate.render('template/index.html',template_values))
+        view = BaseTemplate.render('template/index.html',template_values)
+        self.response.write(view)
 

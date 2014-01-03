@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Last-Updated : <2014/01/03 23:29:07 by samui>
+# Last-Updated : <2014/01/03 23:43:02 by samui>
 
 import webapp2
 from functools import wraps
@@ -32,13 +32,26 @@ class MyMethod:
     class Setting(BaseHandler):
         #@AroundMethod(MyMethod.before,MyMethod.after)
         def get(self):
-            self.response.write("C")
+            template_values = {
+                'test':'HelloWorldWebApp2!',
+                'debug':'t',
+            }
+            self.response.write("Settings")
+            view = BaseTemplate.render('template/index.html',template_values)
+            self.response.write(view)
 
     class Bookmark(BaseHandler):
         #@AroundMethod(before,after)
         def get(self):
+            template_values = {
+                'test':'HelloWorld,WebApp2!',
+                #'debug': self.uri_for('home'),
+                'debug':'t',
+            }
+            view = BaseTemplate.render('template/index.html',template_values)
             self.response.write("Bookmarks")
-            logging.debug('Error')
+            self.response.write(view)
+            
     Setting.get = AroundMethod(before,after)(Setting.get)
     Bookmark.get = AroundMethod(before,after)(Bookmark.get)
     
