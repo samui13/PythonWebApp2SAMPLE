@@ -1,14 +1,24 @@
 {{common_base|safe}}
 {{common_head|safe}}
+<script src="/js/jsonreader.js"></script>
 </head>
 <body>
   <div class="container">
     <h1>samui Log</h1>
-    
   </div>
   <div class="container">
     <a href="{{uri_for('login')}}">Login</a>
     <a href="{{uri_for('my_list')}}">List</a>
   </div>
+  <div ng-app="App" ng-controller="JsonViewer" class="container">
+
+    <div ng-repeat="blog in articles" id="blog-{/blog.ID/}" ng-click="readJson(blog.ID)" ng-dblclick="goView(blog.ID)">
+      <a href="view/{/blog.ID/}"><h2>{/blog.title/}</h2></a>
+      <div id="text" class="container">{/blog.text/}</div>
+      <div id="created_at">{/blog.created_at/}</div>
+    </div>
+    <a href="" ng-click="count = count+5;readMore(count)" ng-init="count=0">More</a>
+    
+</div>
 {{common_footer|safe}}  
 
