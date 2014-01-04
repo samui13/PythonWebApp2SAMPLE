@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Last-Updated : <2014/01/05 04:45:49 by samui>
+# Last-Updated : <2014/01/05 05:12:17 by samui>
 import webapp2
 import logging
 import jinja2

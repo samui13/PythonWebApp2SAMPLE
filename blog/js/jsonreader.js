@@ -39,7 +39,11 @@ customInterpolationApp.controller('JsonViewer',function JsonViewer($scope,$http,
     };
     $scope.readJson = function(ID){
 	$scope.url = "http://localhost:8080/json/view.json/"+ID;
-	$scope.fetch();
+	var t = "\'"+ID+"\'";
+	// 文字列が少ない(Loadされていない)ならばjsonを読み込む。
+	if($scope.articles[t].text.length < 5){
+	    $scope.fetch();
+	}
     };
     $scope.goView = function(ID){
 	var url = "/view/"+ID;
