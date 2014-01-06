@@ -51,7 +51,6 @@ customInterpolationApp.controller('JsonViewer',function JsonViewer($scope,$http,
     };
     $scope.readMore = function(q){
 	$scope.url = "http://localhost:8080/json/list.json?q="+q;
-	console.log($scope.url);
 	$scope.fetch();
     }
     $scope.fetch();
